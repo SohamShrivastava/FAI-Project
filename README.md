@@ -26,77 +26,52 @@ It includes:
 └── README.md
 
 🎮 Snake Environment (environment.py)
-State Representation (size = 11)
+📌 State Representation (11 Features)
 
-Your agent receives an 11-dimensional binary feature vector:
+Each state is encoded as an 11-dimensional binary vector, providing compact but rich information:
 
-Danger straight
+Category	                            Features
+Danger Awareness	                    1. Danger straight
+                                      2. Danger right
+                                      3. Danger left
+                                      
+Current Movement Direction	          4. Moving left
+                                      5. Moving right
+                                      6. Moving up
+                                      7. Moving down
+                                      
+Food Location (Relative to Head)	    8. Food left
+                                      9. Food right
+                                      10. Food up
+                                      11. Food down
 
-Danger right
 
-Danger left
+💀 Game Termination Conditions
 
-Moving left
+The episode ends when any of the following occurs:
 
-Moving right
+  🧱 Snake hits the wall
+  🌀 Snake collides with its own body
+  ⏳ Starvation
 
-Moving up
 
-Moving down
+🧠 Reinforcement Learning Agents (agent.py)
 
-Food left
+🎲 RandomAgent
 
-Food right
+A simple baseline agent that:
+  1. Selects actions uniformly at random
+  2. Provides a reference point for evaluating learning agents
+     
 
-Food up
+📘 SARSA Agent (Tabular SARSA(0))
 
-Food down
+Implements a classical on-policy Temporal Difference method.
 
-Action Space (one-hot encoding)
-[1, 0, 0] → move straight  
-[0, 1, 0] → turn right  
-[0, 0, 1] → turn left
+Key Features:
+  1. ε-greedy exploration (decays with number of games)
+  2. Tabular Q-learning structure
 
-Reward Function
-Event	Reward
-Eating food	+10
-Dying (collision or wall)	–10
-Normal step	0
-Game End Conditions
 
-Snake hits wall
-
-Snake hits its own body
-
-Too many steps without eating (frame_iteration > 100 × length)
-
-🧠 RL Agents (agent.py)
-RandomAgent
-
-Baseline model that picks random moves.
-
-SARSA Agent
-
-Tabular SARSA(0):
-
-ε-greedy exploration
-
-Q-table dictionary (state → [Q(a₀), Q(a₁), Q(a₂)])
-
-Online update rule
-
-DQN Agent
-
-Deep Q-learning with:
-
-Replay Memory: 100,000
-
-Batch Size: 1,000
-
-γ = 0.9
-
-Adam optimizer (lr = 0.001)
-
-MSE loss
-
-Two-layer neural network (11 → 512 → 3)
+🤖 DQN Agent (Deep Q-Learning)
+A neural network–based agent capable of learning advanced strategies.
