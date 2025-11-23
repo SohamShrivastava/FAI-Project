@@ -5,11 +5,11 @@ Built using Python, PyTorch, and Pygame.
 
 ---
 
-## 🚀 Overview
+## Overview
 
 This repository contains a modular RL framework for training different agents on a custom Snake environment.
 
-### ✔ Features
+### Features
 
 - Custom Snake environment using **Pygame**
 - Three agent types: **Random**, **SARSA**, **DQN**
@@ -19,7 +19,7 @@ This repository contains a modular RL framework for training different agents on
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 
 ├── agents.py         
 ├── environment.py   
@@ -29,24 +29,24 @@ This repository contains a modular RL framework for training different agents on
 
 ---
 
-## 🎮 Snake Environment (`environment.py`)
+## Snake Environment (`environment.py`)
 
 ### 📌 **State Representation (11 Features)**
 
 Each observation is encoded as an **11-dimensional binary feature vector**:
 
-#### 🛑 Danger Awareness
+#### Danger Awareness
 1. Danger straight  
 2. Danger right  
 3. Danger left  
 
-#### 🧭 Current Movement Direction
+#### Current Movement Direction
 4. Moving left  
 5. Moving right  
 6. Moving up  
 7. Moving down  
 
-#### 🍎 Food Position (Relative to Head)
+#### Food Position (Relative to Head)
 8. Food left  
 9. Food right  
 10. Food up  
@@ -54,27 +54,27 @@ Each observation is encoded as an **11-dimensional binary feature vector**:
 
 ---
 
-### 💀 **Game Termination Conditions**
+### **Game Termination Conditions**
 
 An episode ends when:
 
-- 🧱 Snake hits the wall  
-- 🌀 Snake collides with its own body  
-- ⏳ Too many steps without eating (starvation)
+- Snake hits the wall  
+- Snake collides with its own body  
+- Too many steps without eating (starvation)
 
 
 ---
 
-## 🧠 Reinforcement Learning Agents (`agents.py`)
+## Reinforcement Learning Agents (`agents.py`)
 
-### 🎲 **RandomAgent**
+### **RandomAgent**
 A simple baseline agent that:
 - Chooses actions uniformly at random  
 - Provides a reference for measuring RL improvements  
 
 ---
 
-### 📘 **SARSA Agent – Tabular SARSA(0)**
+### **SARSA Agent – Tabular SARSA**
 
 Implements **on-policy Temporal Difference learning**.
 
@@ -86,7 +86,7 @@ Implements **on-policy Temporal Difference learning**.
 
 ---
 
-### 🤖 **DQN Agent – Deep Q-Learning**
+### **DQN Agent – Deep Q-Learning**
 
 A neural network–based agent capable of learning complex strategies.
 
